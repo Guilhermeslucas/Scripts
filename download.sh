@@ -24,6 +24,15 @@ echo "########Link encontrado########"
 rm -f resultados*
 rm -f site.html
 
+#pergunta se o usuario quer baixar o nerdcast, tratando o link
+echo "########Voce quer baixar $Link ? ########"
+read -p "(S)im ou (Não)" resposta
+
+if test "$resposta" == "N"
+then
+    exit
+fi
+
 #finalmente baixa o conteudo
 wget $Link
 
