@@ -26,7 +26,8 @@ rm -f site.html
 
 #pergunta se o usuario quer baixar o nerdcast, tratando o link
 echo "########Voce quer baixar $Link ? ########"
-read -p "(S)im ou (Não)" resposta
+read -p "(S)im ou (N)ão " resposta
+ 
 
 if test "$resposta" == "N"
 then
