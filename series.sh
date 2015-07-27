@@ -12,7 +12,7 @@ read -p "(i)nserir,(c)onsultar uma,(v)er todas ou (e)xcluir " opcao
 if test $opcao = "i"
 then
     read -p "Digite o nome da serie " serie
-    read -p "Digire a temporada " temporada
+    read -p "Digite a temporada " temporada
     read -p "Digite o episodio " episodio
     
     #o -v mostra todos os arquivos que nao tem a variavel
