@@ -1,42 +1,38 @@
 #!/bin/bash
 
-#Script simples, para aprender a usar comandos como curl
-#wget, cut e grep
-#sua funcao é baixar o nerdcast mais atual 
+#Simple Script to learn some shell 
+#it downloads the latest nerdcast
 
 #usa comando curl para baixar o html, para procurar o link
-echo "########baixando HTML########"
+echo "########Downloading HTML########"
 curl http://jovemnerd.com.br/categoria/nerdcast/ > site.html
-echo "########baixado com sucesso########"
+echo "########Downloaded HTML########"
 
-#procura pela ocorrencia do zip, que é parte do link para download
+#searches for .zip, that is the file part
 echo "########procurando link########"
-grep .zip site.html > resultados.txt
+grep .zip site.html > results.txt
 
-#corta o arquivo para pegar somente o link
-cut -d'"' -f2 resultados.txt > resultados2.txt
+#cut the file to get the link
+cut -d'"' -f2 results.txt > results2.txt
 
-#direciona a saída do comando para a variável
-Link=`head -1 resultados2.txt`
-echo "########Link encontrado########"
+#makes the complete link
+Link=`head -1 results2.txt`
+echo "######## Found Link ########"
 
-#remove arquivos criados para a execução do Script
-rm -f resultados*
+#Remove the files created by the script
+rm -f results*
 rm -f site.html
 
-#pergunta se o usuario quer baixar o nerdcast, tratando o link
-echo "########Voce quer baixar $Link ? ########"
-read -p "(S)im ou (N)ão " resposta
+echo "######## Do you want to download $Link ? ########"
+read -p "(S)im ou (N)ão " answer
  
 
-if test "$resposta" == "N"
+if test "$answer" == "N"
 then
     exit
 fi
 
-#finalmente baixa o conteudo
+#downloads the file
 wget $Link
 
-
-echo "####Seu Download foi realizado com sucesso. Bom Nerdcast####"
-
+echo "#### Download Completed. Have a nice nerdcast ####"
