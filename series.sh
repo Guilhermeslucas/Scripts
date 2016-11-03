@@ -1,45 +1,36 @@
 #!/bin/bash
 
-#script para gerenciar as séries de tv que cada um acompanha
-#serve para listar quais episodios ja viu e atualizar a lista
-#alem de ser possivel sempre adicionar mais series quando quiser
+#script to manage all the series I watch
 
-#pergunta ao usuario qual o tipo de acao deseja realizar
-echo "Início do Script"
-read -p "(i)nserir,(c)onsultar uma,(v)er todas ou (e)xcluir " opcao
+#Prompt the user for its option
+echo "Begin of the Script"
+read -p "(i)nsert,(c)heck one,(v)erify all ou d(e)lete " option
 
-#insere no arquivo, retirando linha que possui a serie atualizada
-if test $opcao = "i"
+if test $option = "i"
 then
-    read -p "Digite o nome da serie " serie
-    read -p "Digite a temporada " temporada
-    read -p "Digite o episodio " episodio
+    read -p "Whats the series name " series
+    read -p "Whats the season " season
+    read -p "Type the episode " episode
     
-    #o -v mostra todos os arquivos que nao tem a variavel
-    #e coloca em outro arquivo de texto, renomeando posteriormente
-    grep -v $serie series.txt >> seriesaux.txt
-    echo "$serie,S$temporada,E$episodio" >> seriesaux.txt
+    grep -v $series series.txt >> seriesaux.txt
+    echo "$series,S$season,E$episode" >> seriesaux.txt
     mv seriesaux.txt series.txt
 
-#procura a ocorrencia da serie e mostra no terminal
-elif test $opcao = "c"
+elif test $option = "c"
 then
-    read -p "Digite a serie " serie
-    grep $serie series.txt
+    read -p "Whats the series " series
+    grep $series series.txt
 
-#simplesmeste imprime na tela o txt que armazena as series
-elif test $opcao = "v"
+elif test $option = "v"
 then
     cat series.txt 
 
-#usa o mesmo principio do grep para inserir arquivos
-elif test $opcao = "e"
+elif test $option = "e"
 then 
-    read -p "Digite a serie " serie
-    grep -v $serie series.txt >> seriesaux.txt
+    read -p "Whats the series " series
+    grep -v $series series.txt >> seriesaux.txt
     mv seriesaux.txt series.txt
 
 else
-    echo "Esse não é um comando válido"
+    echo "This is not a valid command"
 fi
-
