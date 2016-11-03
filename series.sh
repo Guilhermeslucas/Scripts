@@ -19,7 +19,7 @@ then
     #e coloca em outro arquivo de texto, renomeando posteriormente
     grep -v $serie series.txt >> seriesaux.txt
     echo "$serie,S$temporada,E$episodio" >> seriesaux.txt
-    mv seriesaux.txt /home/glucas/Documentos/Cursos/Shell\ Script/series.txt
+    mv seriesaux.txt series.txt
 
 #procura a ocorrencia da serie e mostra no terminal
 elif test $opcao = "c"
@@ -37,7 +37,7 @@ elif test $opcao = "e"
 then 
     read -p "Digite a serie " serie
     grep -v $serie series.txt >> seriesaux.txt
-    mv seriesaux.txt /home/glucas/Documentos/Cursos/Shell\ Script/series.txt
+    mv seriesaux.txt series.txt
 
 else
     echo "Esse não é um comando válido"
